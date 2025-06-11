@@ -1,0 +1,23 @@
+import pickle
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Load the mnist.pkl file
+with open("mnist.pkl", 'rb') as f:
+    mnist = pickle.load(f)
+
+# Extract data
+X_train = mnist['training_images']
+y_train = mnist['training_labels']
+
+# Function to display one image
+def show_image(index):
+    img = X_train[index].reshape(28, 28)  # Reshape flat 784 array to 28x28
+    plt.imshow(img, cmap='gray')
+    plt.title(f"Label: {y_train[index]}")
+    plt.axis('off')
+    plt.show()
+
+# Show first 5 images
+for i in range(5):
+    show_image(i)
